@@ -1,0 +1,163 @@
+<html>
+
+<head>
+    <title>사이트 예제</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="body-content">
+        <div class="upper-content">
+            <h1>My Skin</h1>
+        </div>
+
+        <hr>
+
+        <div class="main-content">
+            <div class="category">
+                <div class="controls">
+                    <h2>Skin options</h2>
+
+                    <div class="control-section">
+                        <h3>Skin</h3>
+                        <div>
+                            <div class="control">
+                                <label>URL: <input id="skin_url" type="text"
+                                        placeholder="none" size="20"></label>
+                                <input id="skin_url_upload" type="file" class="hidden" accept="image/*">
+                                <button id="skin_url_unset" type="button" class="control hidden">Unset</button>
+                                <button type="button" class="control"
+                                    onclick="document.getElementById('skin_url_upload').click();">Browse...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3>Landscape</h3>
+                        <div class="control">
+                            <label>URL: <input id="panorama_url" type="text" value="" placeholder="none" size="20"></label>
+                            <input id="panorama_url_upload" type="file" class="hidden" accept="image/*">
+                            <button id="panorama_url_unset" type="button" class="control hidden">Unset</button>
+                            <button type="button" class="control"
+                                onclick="document.getElementById('panorama_url_upload').click();">Browse...</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="control-section">
+                        <h3>Skin Layers</h3>
+                        <table id="layers_table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>head</th>
+                                    <th>body</th>
+                                    <th>right arm</th>
+                                    <th>left arm</th>
+                                    <th>right leg</th>
+                                    <th>left leg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>inner</th>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="head" checked></td>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="body" checked></td>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="rightArm" checked>
+                                    </td>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="leftArm" checked></td>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="rightLeg" checked>
+                                    </td>
+                                    <td><input type="checkbox" data-layer="innerLayer" data-part="leftLeg" checked></td>
+                                </tr>
+                                <tr>
+                                    <th>outer</th>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="head" checked></td>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="body" checked></td>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="rightArm" checked>
+                                    </td>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="leftArm" checked></td>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="rightLeg" checked>
+                                    </td>
+                                    <td><input type="checkbox" data-layer="outerLayer" data-part="leftLeg" checked></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="posting-area">
+                <h2>Skin View</h2>
+                <canvas id="skin_container0" onmouseover="onMouse(0)" onmouseout="outMouse(0)"></canvas>
+                <canvas id="skin_container1" onmouseover="onMouse(1)" onmouseout="outMouse(1)"></canvas>
+                <canvas id="skin_container2" onmouseover="onMouse(2)" onmouseout="outMouse(2)"></canvas>
+                <canvas id="skin_container3" onmouseover="onMouse(3)" onmouseout="outMouse(3)"></canvas>
+                <canvas id="skin_container4" onmouseover="onMouse(4)" onmouseout="outMouse(4)"></canvas>
+                <canvas id="skin_container5" onmouseover="onMouse(5)" onmouseout="outMouse(5)"></canvas>
+                <canvas id="skin_container6" onmouseover="onMouse(6)" onmouseout="outMouse(6)"></canvas>
+                <canvas id="skin_container7" onmouseover="onMouse(7)" onmouseout="outMouse(7)"></canvas>
+                <canvas id="skin_container8" onmouseover="onMouse(8)" onmouseout="outMouse(8)"></canvas>
+                <canvas id="skin_container9" onmouseover="onMouse(9)" onmouseout="outMouse(9)"></canvas>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="bottom-content">
+            <h2>Animation options</h2>
+
+            <div class="control-section">
+                <h1>Animation</h1>
+                <label class="control">Global Speed: <input id="global_animation_speed" type="number" value="1"
+                        step="0.1" size="3"></label>
+                <button id="animation_pause_resume" type="button" class="control">Pause / Resume</button>
+                <div>
+                    <h2>Rotate</h2>
+                    <label class="control"><input id="rotate_animation" type="checkbox"> Enable</label>
+                    <label class="control">Speed: <input id="rotate_animation_speed" type="number" value="1"
+                            step="0.1" size="3"></label>
+                </div>
+                <div>
+                    <h2>Walk / Run / Fly</h2>
+                    <div class="control">
+                        <label><input type="radio" id="primary_animation_none" name="primary_animation" value=""
+                                checked> None</label>
+                        <label><input type="radio" id="primary_animation_idle" name="primary_animation"
+                                value="idle"> Idle</label>
+                        <label><input type="radio" id="primary_animation_walk" name="primary_animation"
+                                value="walk"> Walk</label>
+                        <label><input type="radio" id="primary_animation_run" name="primary_animation"
+                                value="run"> Run</label>
+                        <label><input type="radio" id="primary_animation_fly" name="primary_animation"
+                                value="fly"> Fly</label>
+                    </div>
+                    <label class="control">Speed: <input id="primary_animation_speed" type="number" value="1"
+                            step="0.1" size="3"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/skinview3d.bundle.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/stats.js@0.17.0/src/Stats.js"
+        integrity="sha384-W71K+d2HbqXqQWSj3Vj4RDsIVvIV7lR8O6RArKAiqB39ntwLci0W08qOn4Z1n8sM" crossorigin="anonymous"
+        async></script>
+    <script type="module" async>
+        import Stats from "https://unpkg.com/stats.js@0.17.0/src/Stats.js";
+        const stats = new Stats();
+        stats.dom.style.left = "";
+        stats.dom.style.right = "0";
+        document.body.appendChild(stats.dom);
+        function loop() {
+            stats.update();
+            requestAnimationFrame(loop)
+        }
+        requestAnimationFrame(loop);
+    </script>
+</body>
+
+</html>
